@@ -81,7 +81,7 @@
 // User-specified version info of this build to display in [Pronterface, etc] terminal window during
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
-#define STRING_CONFIG_H_AUTHOR "(none, default config)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "MRay" // Who made the changes.
 #define SHOW_BOOTSCREEN
 #define STRING_SPLASH_LINE1 SHORT_BUILD_VERSION // will be shown during bootup in line 1
 #define STRING_SPLASH_LINE2 WEBSITE_URL         // will be shown during bootup in line 2
@@ -136,7 +136,7 @@
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
-//#define CUSTOM_MACHINE_NAME "3D Printer"
+#define CUSTOM_MACHINE_NAME "MRay printer"
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -149,7 +149,7 @@
 #define EXTRUDERS 1
 
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
-#define DEFAULT_NOMINAL_FILAMENT_DIA 3.0
+#define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
 
 // For Cyclops or any "multi-extruder" that shares a single nozzle.
 //#define SINGLENOZZLE
@@ -310,12 +310,12 @@
  *
  * :{ '0': "Not used", '1':"100k / 4.7k - EPCOS", '2':"200k / 4.7k - ATC Semitec 204GT-2", '3':"Mendel-parts / 4.7k", '4':"10k !! do not use for a hotend. Bad resolution at high temp. !!", '5':"100K / 4.7k - ATC Semitec 104GT-2 (Used in ParCan & J-Head)", '501':"100K Zonestar (Tronxy X3A)", '6':"100k / 4.7k EPCOS - Not as accurate as Table 1", '7':"100k / 4.7k Honeywell 135-104LAG-J01", '8':"100k / 4.7k 0603 SMD Vishay NTCS0603E3104FXT", '9':"100k / 4.7k GE Sensing AL03006-58.2K-97-G1", '10':"100k / 4.7k RS 198-961", '11':"100k / 4.7k beta 3950 1%", '12':"100k / 4.7k 0603 SMD Vishay NTCS0603E3104FXT (calibrated for Makibox hot bed)", '13':"100k Hisens 3950  1% up to 300°C for hotend 'Simple ONE ' & hotend 'All In ONE'", '20':"PT100 (Ultimainboard V2.x)", '51':"100k / 1k - EPCOS", '52':"200k / 1k - ATC Semitec 204GT-2", '55':"100k / 1k - ATC Semitec 104GT-2 (Used in ParCan & J-Head)", '60':"100k Maker's Tool Works Kapton Bed Thermistor beta=3950", '66':"Dyze Design 4.7M High Temperature thermistor", '70':"the 100K thermistor found in the bq Hephestos 2", '71':"100k / 4.7k Honeywell 135-104LAF-J01", '147':"Pt100 / 4.7k", '1047':"Pt1000 / 4.7k", '110':"Pt100 / 1k (non-standard)", '1010':"Pt1000 / 1k (non standard)", '-4':"Thermocouple + AD8495", '-3':"Thermocouple + MAX31855 (only for sensor 0)", '-2':"Thermocouple + MAX6675 (only for sensor 0)", '-1':"Thermocouple + AD595",'998':"Dummy 1", '999':"Dummy 2" }
  */
-#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 11
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
 #define TEMP_SENSOR_4 0
-#define TEMP_SENSOR_BED 0
+#define TEMP_SENSOR_BED 11
 #define TEMP_SENSOR_CHAMBER 0
 
 // Dummy thermistor constant temperature readings, for use with 998 and 999
@@ -355,7 +355,7 @@
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
 #define HEATER_4_MAXTEMP 275
-#define BED_MAXTEMP 150
+#define BED_MAXTEMP 80
 
 //===========================================================================
 //============================= PID Settings ================================
@@ -493,7 +493,7 @@
 // either in the usual order or reversed
 //#define COREXY
 //#define COREXZ
-//#define COREYZ
+#define COREYZ
 //#define COREYX
 //#define COREZX
 //#define COREZY
@@ -515,7 +515,7 @@
 //#define USE_ZMAX_PLUG
 
 // Enable pullup for all endstops to prevent a floating state
-#define ENDSTOPPULLUPS
+//#define ENDSTOPPULLUPS
 #if DISABLED(ENDSTOPPULLUPS)
   // Disable ENDSTOPPULLUPS to set pullups individually
   //#define ENDSTOPPULLUP_XMAX
@@ -530,11 +530,11 @@
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
 #define X_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Z_MIN_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
+#define Z_MIN_ENDSTOP_INVERTING true // set to true to invert the logic of the endstop.
 #define X_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
 #define Y_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
 #define Z_MAX_ENDSTOP_INVERTING false // set to true to invert the logic of the endstop.
-#define Z_MIN_PROBE_ENDSTOP_INVERTING false // set to true to invert the logic of the probe.
+#define Z_MIN_PROBE_ENDSTOP_INVERTING true // set to true to invert the logic of the probe.
 
 /**
  * Stepper Drivers
@@ -608,14 +608,14 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 4000, 500 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 100, 418 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 50 }
 
 /**
  * Default Max Acceleration (change/s) change = mm/s
@@ -623,7 +623,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 2500, 2500, 100, 50 }
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -634,7 +634,7 @@
  *   M204 T    Travel Acceleration
  */
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
+#define DEFAULT_RETRACT_ACCELERATION  1500    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
@@ -645,9 +645,9 @@
  * When changing speed and direction, if the difference is less than the
  * value set here, it may happen instantaneously.
  */
-#define DEFAULT_XJERK                 10.0
-#define DEFAULT_YJERK                 10.0
-#define DEFAULT_ZJERK                  0.3
+#define DEFAULT_XJERK                 8.0
+#define DEFAULT_YJERK                 8.0
+#define DEFAULT_ZJERK                  0.4
 #define DEFAULT_EJERK                  5.0
 
 /**
@@ -716,7 +716,7 @@
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
  *   (e.g., an inductive probe or a nozzle-based probe-switch.)
  */
-//#define FIX_MOUNTED_PROBE
+#define FIX_MOUNTED_PROBE
 
 /**
  * Z Servo Probe, such as an endstop switch on a rotating arm.
@@ -775,7 +775,7 @@
  */
 #define X_PROBE_OFFSET_FROM_EXTRUDER 10  // X offset: -left  +right  [of the nozzle]
 #define Y_PROBE_OFFSET_FROM_EXTRUDER 10  // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER 0   // Z offset: -below +above  [the nozzle]
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -1.3   // Z offset: -below +above  [the nozzle]
 
 // Certain types of probes need to stay away from edges
 #define MIN_PROBE_EDGE 10
@@ -876,8 +876,9 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 200
-#define Y_BED_SIZE 200
+#define X_BED_SIZE 300
+#define Y_BED_SIZE 280
+#define Z_SIZE 280
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -885,7 +886,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 200
+#define Z_MAX_POS Z_SIZE
 
 /**
  * Software Endstops
@@ -897,7 +898,7 @@
  */
 
 // Min software endstops constrain movement within minimum coordinate bounds
-#define MIN_SOFTWARE_ENDSTOPS
+//#define MIN_SOFTWARE_ENDSTOPS
 #if ENABLED(MIN_SOFTWARE_ENDSTOPS)
   #define MIN_SOFTWARE_ENDSTOP_X
   #define MIN_SOFTWARE_ENDSTOP_Y
@@ -970,10 +971,10 @@
  *   leveling in steps so you can manually adjust the Z height at each grid-point.
  *   With an LCD controller the process is guided step-by-step.
  */
-//#define AUTO_BED_LEVELING_3POINT
+#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
 //#define AUTO_BED_LEVELING_BILINEAR
-//#define AUTO_BED_LEVELING_UBL
+// #define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
 /**
@@ -1139,7 +1140,7 @@
 // - Move the Z probe (or nozzle) to a defined XY point before Z Homing when homing all axes (G28).
 // - Prevent Z homing when the Z probe is outside bed area.
 //
-//#define Z_SAFE_HOMING
+#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE) / 2)    // X point for Z homing when homing all axes (G28).
@@ -1254,7 +1255,7 @@
 
 // Preheat Constants
 #define PREHEAT_1_TEMP_HOTEND 180
-#define PREHEAT_1_TEMP_BED     70
+#define PREHEAT_1_TEMP_BED     45
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_2_TEMP_HOTEND 240
@@ -1496,7 +1497,7 @@
 //
 // Add individual axis homing items (Home X, Home Y, and Home Z) to the LCD menu.
 //
-//#define INDIVIDUAL_AXIS_HOMING_MENU
+#define INDIVIDUAL_AXIS_HOMING_MENU
 
 //
 // SPEAKER/BUZZER
@@ -1654,7 +1655,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //
 // ReprapWorld Graphical LCD
